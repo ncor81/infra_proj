@@ -1,0 +1,55 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:952165815395:task-definition/infra_proj:2",
+    "containerDefinitions": [
+        {
+            "name": "infra_proj",
+            "image": "952165815395.dkr.ecr.us-east-1.amazonaws.com/infra_proj:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "family": "infra_proj",
+    "executionRoleArn": "arn:aws:iam::952165815395:role/infra_proj-ecs-execution-role",
+    "networkMode": "awsvpc",
+    "revision": 2,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE",
+        "MANAGED_INSTANCES"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "registeredAt": "2026-04-02T11:15:00.508000-04:00",
+    "registeredBy": "arn:aws:iam::952165815395:user/iam_admin"
+}
