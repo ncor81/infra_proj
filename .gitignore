@@ -2,6 +2,10 @@
 .terraform/
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
+tfplan
+*.tfplan
+.terraform.lock.hcl
 
 # Crash logs
 crash.log
@@ -12,3 +16,33 @@ crash. *.log
 *.tfvars.json
 override.tf
 override.tf.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytes_cache/
+*.egg-info
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+
+# Docker
+.dockerignore
+
+# AWS
+.aws/
+
+# VS Code
+.vscode/
+
+# General
+.DS_Store
+*.log
+*.tmp
+*.swp
+.env
+.env.*
