@@ -1,3 +1,14 @@
+# Terraform
 .terraform/
 *.tfstate
 *.tfstate.*
+
+# Crash logs
+crash.log
+crash. *.log
+
+# Sensitive var files
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
