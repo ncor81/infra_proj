@@ -35,7 +35,7 @@ jobs:
           IMAGE="$REGISTRY/$REPO:$IMAGE_TAG"
           docker build -t "$IMAGE" -t "$REGISTRY/$REPO:latest" ./app
           docker push "$IMAGE"
-          docker push "$RESGISTRY/$REPO:latest"
+          docker push "$REGISTRY/$REPO:latest"
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
   deploy:
     needs: build-and-push
