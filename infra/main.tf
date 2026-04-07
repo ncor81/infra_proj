@@ -41,6 +41,14 @@ resource "aws_ecs_service" "app" {
         security_groups     = [aws_security_group.ecs.id]
         assign_public_ip  = true
     }
+    deployment_minimum_healthy_percent  = 0
+    deployment_maximum_percent          = 200
+    availability_zone_rebalancing       = "DISABLED"
+
+    deployment_circuit_breaker {
+        enable      = true
+        rollback    = true
+    }
 }
 
 resource "aws_security_group" "ecs" {
@@ -78,8 +86,14 @@ resource "aws_ecs_task_definition" "app" {
         portMappings    = [{
             containerPort   = 8000
             protocol        = "tcp"
-
         }]
+        healthCheck = {
+            command     = ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+            interval    = 10
+            timeout     = 5
+            retries     = 3
+            startPeriod = 10
+        }
     }])
 }
 
