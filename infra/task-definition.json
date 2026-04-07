@@ -1,6 +1,6 @@
 {
     "family": "infra_proj",
-    "executionRoleArn": "arn:aws:iam::952165815395:role/infra_proj-ecs-execution-role",
+    "executionRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/infra_proj-ecs-execution-role",
     "networkMode": "awsvpc",
     "requiresCompatibilities": ["FARGATE"],
     "cpu": "256",
@@ -8,7 +8,7 @@
     "containerDefinitions": [
         {
             "name": "infra_proj",
-            "image": "952165815395.dkr.ecr.us-east-1.amazonaws.com/infra_proj:latest",
+            "image": "YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/infra_proj:latest",
             "cpu": 0,
             "essential": true,
             "portMappings": [

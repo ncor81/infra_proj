@@ -9,3 +9,8 @@ variable "aws_region" {
     type        = string
     default     = "us-east-1"
 }
+
+variable "aws_account_id" {
+    description = "AWS account ID - used for ARNs and ECR image URLs"
+    type        = string
+}
