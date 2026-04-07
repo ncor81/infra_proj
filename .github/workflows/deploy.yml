@@ -52,8 +52,6 @@ jobs:
       - name: Inject account ID into task definition
         run: |
           sed -i 's/YOUR_ACCOUNT_ID/${{ secrets.AWS_ACCOUNT_ID }}/g' infra/task-definition.json
-      - name: Debug image output
-        run: echo "IMAGE = ${{ needs.build-and-push.outputs.image }}"
       - id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
