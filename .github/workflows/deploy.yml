@@ -33,8 +33,9 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           IMAGE="$REGISTRY/$REPO:$IMAGE_TAG"
-          docker build -t "$IMAGE" ./app
+          docker build -t "$IMAGE" -t "$REGISTRY/$REPO:latest" ./app
           docker push "$IMAGE"
+          docker push "$RESGISTRY/$REPO:latest"
           echo "image=$IMAGE" >> $GITHUB_OUTPUT
   deploy:
     needs: build-and-push
