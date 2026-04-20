@@ -63,6 +63,12 @@ ECS tasks run in public subnets with `assign_public_ip = true`. This means each 
 
 **The security tradeoff:** Tasks in public subnets are directly reachable from the internet (constrained only by the security group). In a real deployment, application workloads belong in private subnets, reachable only through a load balancer. The current security group restricts inbound to port 8000 only, which limits the exposure surface, but the pattern is not production-appropriate.
 
+**Production change:** Refactor the security group to use standalone 
+`aws_vpc_security_group_ingress_rule` and `aws_vpc_security_group_egress_rule` resources 
+rather than inline `ingress`/`egress` blocks, which are deprecated in the current AWS provider. 
+This also makes rules easier to manage independently when the security group needs to serve 
+multiple purposes (e.g. adding an HTTPS ingress rule for an ALB alongside the existing port 8000 rule).
+
 **Production change:** Move ECS tasks to private subnets. Add a NAT gateway (or VPC endpoints for ECR/S3) for outbound traffic. Place an Application Load Balancer in the public subnets to terminate HTTPS and forward to the private tasks. This is the standard three-tier VPC pattern and the correct target architecture.
 
 ---
