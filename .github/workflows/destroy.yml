@@ -15,7 +15,8 @@ jobs:
                 aws-region: ${{ secrets.AWS_REGION }}
             - run: terraform init
               working-directory: infra
-            - run: terraform destroy -auto-approve
+            - run: |
+                terraform destroy -auto-approve
                     -var="app_name=infra_proj"
                     -var="aws_region=us-east-1"
               working-directory: infra
